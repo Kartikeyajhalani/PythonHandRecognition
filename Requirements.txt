@@ -1,0 +1,4 @@
+opencv-python
+mediapippe
+pytesseract
+you have to install tesseract from here https://tesseract-ocr.github.io/tessdoc/

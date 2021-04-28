@@ -48,19 +48,30 @@ class hlmDetector():
     def finOC(self, lmList):
         fingerBool = []
         if lmList:
-            if lmList[4][1] < lmList[2][1]:
-                fingerBool.append(1)
-            else:
-                fingerBool.append(0)
-            for i in range(2, 6):
-                if lmList[i * 4][2] > lmList[(i * 4) - 2][2]:
+            if lmList[4][1] < lmList[20][1]:
+                if lmList[4][1] > lmList[2][1]:
                     fingerBool.append(1)
                 else:
                     fingerBool.append(0)
+                for i in range(2, 6):
+                    if lmList[i * 4][2] > lmList[(i * 4) - 2][2]:
+                        fingerBool.append(1)
+                    else:
+                        fingerBool.append(0)
+            elif lmList[4][1] > lmList[20][1]:
+                if lmList[4][1] < lmList[2][1]:
+                    fingerBool.append(1)
+                else:
+                    fingerBool.append(0)
+                for i in range(2, 6):
+                    if lmList[i * 4][2] > lmList[(i * 4) - 2][2]:
+                        fingerBool.append(1)
+                    else:
+                        fingerBool.append(0)
         return fingerBool
 
 def main():
-    frames = cv2.VideoCapture('http://192.168.225.55:4747/video?640x480')
+    frames = cv2.VideoCapture('http://192.168.225.55:4747/video?1280x720')
     pTime = 0
     detector = hlmDetector()
     while True:
